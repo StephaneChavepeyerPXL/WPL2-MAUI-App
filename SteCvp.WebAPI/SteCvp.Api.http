@@ -1,0 +1,6 @@
+@SteCvp.WebAPI_HostAddress = http://localhost:5028
+
+GET {{SteCvp.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
