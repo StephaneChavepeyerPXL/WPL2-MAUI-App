@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnit3", "NUnit3\NUnit3.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteCvp.Presentation", "SteCvp.Presentation\SteCvp.Presentation.csproj", "{6E7F82B0-CD5E-46C2-843F-28B2FB03AB15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteCvp.Presentation.Maui", "SteCvp.Presentation.Maui\SteCvp.Presentation.Maui.csproj", "{DC918C7E-EE21-4EB3-BD6C-210C3A2A1EF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,12 @@ Global
 		{6E7F82B0-CD5E-46C2-843F-28B2FB03AB15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E7F82B0-CD5E-46C2-843F-28B2FB03AB15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E7F82B0-CD5E-46C2-843F-28B2FB03AB15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC918C7E-EE21-4EB3-BD6C-210C3A2A1EF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC918C7E-EE21-4EB3-BD6C-210C3A2A1EF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC918C7E-EE21-4EB3-BD6C-210C3A2A1EF8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DC918C7E-EE21-4EB3-BD6C-210C3A2A1EF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC918C7E-EE21-4EB3-BD6C-210C3A2A1EF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC918C7E-EE21-4EB3-BD6C-210C3A2A1EF8}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
