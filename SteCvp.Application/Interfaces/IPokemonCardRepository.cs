@@ -10,5 +10,6 @@ namespace SteCvp.Application.Interfaces
     public interface IPokemonCardRepository
     {
         Task<IEnumerable<PokemonCard>> GetAllAsync();
+        Task<int> AddAsync(PokemonCard pokemonCard);
     }
 }
