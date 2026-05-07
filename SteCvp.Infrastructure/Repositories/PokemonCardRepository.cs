@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 using SteCvp.Application.Interfaces;
 using SteCvp.Domain.Entities;
 
@@ -20,9 +21,12 @@ namespace SteCvp.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<PokemonCard>> GetAllAsync()
+        public async Task<IEnumerable<PokemonCard>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            using var connection = _connectionFactory.CreateConnection();
+            string sql = "SELECT * FROM dbo.PokemonCards";
+
+            return await connection.QueryAsync<PokemonCard>(sql);
         }
     }
 }

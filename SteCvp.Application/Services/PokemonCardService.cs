@@ -17,12 +17,12 @@ namespace SteCvp.Application.Services
             _pokemonCardRepository = pokemonCardRepository;
         }
 
-        public Task<IEnumerable<PokemonCard>> GetAllPokemonCards()
+        public Task<IEnumerable<PokemonCard>> GetAllPokemonCardsAsync()
         {
             return _pokemonCardRepository.GetAllAsync();
         }
 
-        public Task<int> AddPokemonCard(PokemonCard pokemoncard)
+        public Task<int> AddPokemonCardAsync(PokemonCard pokemoncard)
         {
             return _pokemonCardRepository.AddAsync(pokemoncard);
         }
