@@ -8,4 +8,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SteCvp.Application\SteCvp.Application.csproj" />
+    <ProjectReference Include="..\SteCvp.Domain\SteCvp.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
