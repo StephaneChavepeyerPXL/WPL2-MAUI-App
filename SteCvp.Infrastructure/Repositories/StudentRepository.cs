@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SteCvp.Domain;
+using SteCvp.Infrastructure.Database;
 
 
 namespace SteCvp.Infrastructure.Repositories
@@ -12,16 +13,14 @@ namespace SteCvp.Infrastructure.Repositories
     public class StudentRepository : Repository
 
     {
-
-        public StudentRepository() : base()
-
+        public StudentRepository(DbConnectionFactory connectionFactory) : base(connectionFactory)
         {
 
         }
 
         public IEnumerable<Student> GetAll() // LEEST data uit de database en geeft een lijst van studenten terug
         {
-            using var connection = CreateConnection();
+            using var connection = _connectionFactory.CreateConnection();
 
             string sql = @"SELECT studentId AS Id,FirstName, LastName FROM Students;";
 
@@ -30,7 +29,7 @@ namespace SteCvp.Infrastructure.Repositories
 
         public void Add(Student student) // VOEGT een nieuwe student toe aan de database
         {
-            using var connection = CreateConnection();
+            using var connection = _connectionFactory.CreateConnection();
 
             string sql = @"INSERT INTO Students (FirstName, LastName) VALUES (@FirstName, @LastName);";
 

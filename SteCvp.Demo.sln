@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteCvp.Application", "SteCv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteCvp.Infrastructure", "SteCvp.Infrastructure\SteCvp.Infrastructure.csproj", "{A2F56F80-E743-4B61-929A-90220EEAD63E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteCvp.Api", "SteCvp.WebAPI\SteCvp.Api.csproj", "{B711C2EC-87EB-4907-9617-DCB4364BA559}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteCvp.WebAPI", "SteCvp.WebAPI\SteCvp.WebAPI.csproj", "{B711C2EC-87EB-4907-9617-DCB4364BA559}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnit3", "NUnit3\NUnit3.csproj", "{2EDAEA24-28AA-4D51-BDD9-A31FE9E6EAAE}"
 EndProject

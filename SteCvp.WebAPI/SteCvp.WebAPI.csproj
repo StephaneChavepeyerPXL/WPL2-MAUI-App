@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SteCvp.Application\SteCvp.Application.csproj" />
     <ProjectReference Include="..\SteCvp.Domain\SteCvp.Domain.csproj" />
+    <ProjectReference Include="..\SteCvp.Infrastructure\SteCvp.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

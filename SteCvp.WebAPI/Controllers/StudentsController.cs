@@ -4,45 +4,44 @@ using SteCvp.Domain;
 
 namespace SteCvp.Api.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
 
-    [ApiController]
+    //[ApiController]
 
-    public class StudentsController : ControllerBase
+    //public class StudentsController : ControllerBase
 
-    {
+    //{
 
-        private readonly StudentService _service;
+    //    private readonly StudentService _service;
 
-        public StudentsController()
+    //    public StudentsController()
 
-        {
+    //    {
 
-            _service = new StudentService();
+    //        _service = new StudentService();
 
-        }
+    //    }
 
-        [HttpGet]
+    //    [HttpGet]
 
-        public ActionResult<List<Student>> Get()
+    //    public ActionResult<List<Student>> Get()
 
-        {
+    //    {
 
-            return Ok(_service.GetStudents());
+    //        return Ok(_service.GetStudents());
 
-        }
+    //    }
 
-        [HttpPost]
+    //    [HttpPost]
 
-        public IActionResult Post([FromBody] Student student)
+    //    public IActionResult Post([FromBody] Student student)
 
-        {
+    //    {
 
-            _service.AddStudent(student.FirstName, student.LastName);
+    //        _service.AddStudent(student.FirstName, student.LastName);
 
-            return Ok();
+    //        return Ok();
 
-        }
-
-    }
+    //    }
+    //}
 }

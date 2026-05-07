@@ -1,4 +1,9 @@
 
+using SteCvp.Application.Interfaces;
+using SteCvp.Application.Services;
+using SteCvp.Infrastructure.Repositories;
+using SteCvp.Infrastructure.Database;
+
 namespace SteCvp.WebAPI
 {
     public class Program
@@ -13,6 +18,9 @@ namespace SteCvp.WebAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<PokemonCardService>();
+            builder.Services.AddScoped<IPokemonCardRepository, PokemonCardRepository>();
+            builder.Services.AddScoped<DbConnectionFactory>();
 
             var app = builder.Build();
 
