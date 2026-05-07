@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SteCvp.Application.Services;
+using SteCvp.Domain.Entities;
 
 namespace SteCvp.WebAPI.Controllers
 {
@@ -21,6 +22,14 @@ namespace SteCvp.WebAPI.Controllers
             var pokemonCards = await _pokemonCardService.GetAllPokemonCardsAsync();
 
             return Ok(pokemonCards);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(PokemonCard pokemonCard)
+        {
+            int newId = await _pokemonCardService.AddPokemonCardAsync(pokemonCard);
+
+            return Ok(newId);
         }
     }
 }
