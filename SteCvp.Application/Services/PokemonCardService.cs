@@ -21,5 +21,10 @@ namespace SteCvp.Application.Services
         {
             return _pokemonCardRepository.GetAllAsync();
         }
+
+        public Task<int> AddPokemonCard(PokemonCard pokemoncard)
+        {
+            return _pokemonCardRepository.AddAsync(pokemoncard);
+        }
     }
 }

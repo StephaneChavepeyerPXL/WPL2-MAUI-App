@@ -9,6 +9,6 @@ namespace SteCvp.Application.Framework
     public class SelectResult<T> : BaseResult
 
     {
-        public IEnumerable<T> Rows { get; set; }
+        public IEnumerable<T> Rows { get; set; } = new List<T>();
     }
 }
