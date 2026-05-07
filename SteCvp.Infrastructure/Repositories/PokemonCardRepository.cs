@@ -16,14 +16,21 @@ namespace SteCvp.Infrastructure.Repositories
         {
         }
 
-        public Task<int> AddAsync(PokemonCard pokemonCard)
+        public async Task<int> AddAsync(PokemonCard pokemonCard)
         {
-            throw new NotImplementedException();
+            using var connection = _connectionFactory.CreateConnection();
+
+            string sql = "INSERT INTO dbo.PokemonCards (Name, SetName, Rarity, EstimatedValue, PhotoUrl) " +
+                         "VALUES (@Name, @SetName, @Rarity, @EstimatedValue, @PhotoUrl); " +
+                         "SELECT CAST(SCOPE_IDENTITY() as int)";
+
+            return await connection.ExecuteScalarAsync<int>(sql, pokemonCard);
         }
 
         public async Task<IEnumerable<PokemonCard>> GetAllAsync()
         {
             using var connection = _connectionFactory.CreateConnection();
+
             string sql = "SELECT * FROM dbo.PokemonCards";
 
             return await connection.QueryAsync<PokemonCard>(sql);
