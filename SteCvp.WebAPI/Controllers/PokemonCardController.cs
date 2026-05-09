@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SteCvp.Application.Services;
 using SteCvp.Domain.Entities;
 
@@ -21,7 +22,9 @@ namespace SteCvp.WebAPI.Controllers
         {
             var pokemonCards = await _pokemonCardService.GetAllPokemonCardsAsync();
 
-            return Ok(pokemonCards);
+            var json = JsonConvert.SerializeObject(pokemonCards);
+
+            return Ok(json);
         }
 
         [HttpPost]
