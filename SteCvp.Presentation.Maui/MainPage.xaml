@@ -25,13 +25,13 @@
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
 
             <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
+                x:Name="LoadPokemonCardsButton"
+                Text="Show Pokémons" 
+                SemanticProperties.Hint="Shows a list of Pokémon cards"
+                Clicked="OnLoadPokemonCardsClicked"
                 HorizontalOptions="Fill" />
 
-            <ListView>
+            <ListView x:Name="PokemonCardsListView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Label Text="{Binding Name}"></Label>

@@ -1,24 +1,23 @@
-﻿namespace SteCvp.Presentation.Maui
+﻿using SteCvp.Presentation.Maui.Services;
+
+namespace SteCvp.Presentation.Maui
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        private readonly RestService _restService;
 
         public MainPage()
         {
             InitializeComponent();
+
+            _restService = new RestService();
         }
-
-        private void OnCounterClicked(object sender, EventArgs e)
+        
+        public async void OnLoadPokemonCardsClicked(object sender, EventArgs e)
         {
-            count++;
+            var pokemonCards = await _restService.GetPokemonCardsAsync(); // Haalt de lijst van Pokemon-kaarten op van de REST API
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            PokemonCardsListView.ItemsSource = pokemonCards; // Stelt de ItemsSource van de ListView in op de opgehaalde lijst van Pokemon-kaarten
         }
     }
 
