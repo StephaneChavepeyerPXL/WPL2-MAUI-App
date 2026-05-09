@@ -14,5 +14,7 @@ namespace SteCvp.Presentation.Maui.Services
         {
             _httpClient = new HttpClient();
         }
+
+        private const string REST_URL = "https://g80zrzgj-7082.euw.devtunnels.ms/api/PokemonCard";
     }
 }
