@@ -34,7 +34,11 @@
             <ListView>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-
+                        <Label Text="{Binding Name}"></Label>
+                        <Label Text="{Binding SetName}"></Label>
+                        <Label Text="{Binding Rarity}"></Label>
+                        <Label Text="{Binding EstimatedValue}"></Label>
+                        <Image Source="{Binding PhotoUrl}"></Image>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
