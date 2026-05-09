@@ -32,7 +32,11 @@
                 HorizontalOptions="Fill" />
 
             <ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
 
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
 
         </VerticalStackLayout>
