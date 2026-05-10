@@ -1,4 +1,5 @@
 ﻿using SteCvp.Presentation.Maui.Services;
+using Plugin.Maui.Audio;
 
 namespace SteCvp.Presentation.Maui
 {
@@ -29,6 +30,33 @@ namespace SteCvp.Presentation.Maui
             PokemonCardsListView.ItemsSource = pokemonCards; // Stelt de ItemsSource van de ListView in op de opgehaalde lijst van Pokemon-kaarten
 
             LoadPokemonCardsButton.Text = "Hide Pokémon Cards";
+        }
+
+        private async void OnPlaySoundClicked(object sender, EventArgs e)
+        {
+            if (sender is not Button button)
+            {
+                return;
+            }
+
+            string pokemonName = button.CommandParameter?.ToString();
+
+            string fileName = pokemonName switch
+            {
+                "Pikachu ex" => "pikachu.mp3",
+                "Charizard" => "charizard.mp3",
+                _ => null
+            };
+
+            if (fileName == null)
+            {
+                await DisplayAlert("Error", $"No sound found for {pokemonName}", "OK");
+                return;
+            }
+
+            var stream = await FileSystem.OpenAppPackageFileAsync(fileName);
+            var player = AudioManager.Current.CreatePlayer(stream);
+            player.Play();
         }
     }
 

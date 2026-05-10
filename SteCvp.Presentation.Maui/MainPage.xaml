@@ -44,6 +44,11 @@
                                        FontAttributes="Bold"
                                        FontSize="18" />
 
+                                <Button Text="🔊"
+                                        WidthRequest="100"
+                                        Clicked="OnPlaySoundClicked"
+                                        CommandParameter="{Binding Name}" />
+
                                 <Label Text="{Binding SetName}" />
                                 <Label Text="{Binding Rarity}" />
                                 <Label Text=""></Label>
