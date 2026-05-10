@@ -12,7 +12,7 @@ namespace SteCvp.Presentation.Maui.Services
     {
         private readonly HttpClient _httpClient;
 
-        private const string REST_URL = "https://g80zrzgj-7082.euw.devtunnels.ms/api/PokemonCard";
+        private const string REST_URL = "https://lt0vjzzx-7082.euw.devtunnels.ms/api/PokemonCard";
 
         public RestService()
         {
@@ -32,7 +32,9 @@ namespace SteCvp.Presentation.Maui.Services
 
             var content = await response.Content.ReadAsStringAsync(); // Leest de inhoud van het antwoord als een string
 
-            var pokemonCards = JsonConvert.DeserializeObject<IEnumerable<PokemonCard>>(content); // Deserialiseert de JSON-string naar een lijst van PokemonCard-objecten
+            //await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("DEBUG", content, "OK");
+
+            var pokemonCards = JsonConvert.DeserializeObject<IEnumerable<PokemonCard>>(content);
 
             return pokemonCards;
         }

@@ -22,9 +22,7 @@ namespace SteCvp.WebAPI.Controllers
         {
             var pokemonCards = await _pokemonCardService.GetAllPokemonCardsAsync();
 
-            var json = JsonConvert.SerializeObject(pokemonCards);
-
-            return Ok(json);
+            return Ok(pokemonCards);
         }
 
         [HttpPost]
