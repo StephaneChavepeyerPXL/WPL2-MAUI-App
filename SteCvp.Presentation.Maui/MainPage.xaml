@@ -39,9 +39,7 @@
                               ColumnDefinitions="*,120"
                               ColumnSpacing="15">
 
-                            <VerticalStackLayout Grid.Column="0"
-                                                 Spacing="4"
-                                                 VerticalOptions="Center">
+                            <VerticalStackLayout Grid.Column="0" Spacing="4" VerticalOptions="Center">
                                 <Label Text="{Binding Name}"
                                        FontAttributes="Bold"
                                        FontSize="18" />

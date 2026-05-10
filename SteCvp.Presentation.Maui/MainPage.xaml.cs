@@ -15,9 +15,20 @@ namespace SteCvp.Presentation.Maui
         
         public async void OnLoadPokemonCardsClicked(object sender, EventArgs e)
         {
+            if (PokemonCardsListView.ItemsSource != null) 
+            {
+                PokemonCardsListView.ItemsSource = null;
+
+                LoadPokemonCardsButton.Text = "Load Pokémon Cards";
+
+                return;
+            }
+
             var pokemonCards = await _restService.GetPokemonCardsAsync(); // Haalt de lijst van Pokemon-kaarten op van de REST API
 
             PokemonCardsListView.ItemsSource = pokemonCards; // Stelt de ItemsSource van de ListView in op de opgehaalde lijst van Pokemon-kaarten
+
+            LoadPokemonCardsButton.Text = "Hide Pokémon Cards";
         }
     }
 
