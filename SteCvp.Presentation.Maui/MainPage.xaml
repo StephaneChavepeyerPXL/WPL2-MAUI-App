@@ -11,18 +11,22 @@
                Aspect="AspectFit" />
 
         <Label Grid.Row="1"
-               Text="Hello, World!"
-               Style="{StaticResource Headline}" />
+               Text="Gotta load 'em all!"
+               Style="{StaticResource Headline}"
+               FontAttributes="Bold"/>
 
         <Label Grid.Row="2"
-               Text="Welcome to &#10;.NET Multi-platform App UI"
-               Style="{StaticResource SubHeadline}" />
+               Text="Click on the button to receive cards from the database."
+               Style="{StaticResource SubHeadline}"
+               FontSize="14"/>
 
         <Button Grid.Row="3"
                 x:Name="LoadPokemonCardsButton"
-                Text="Show Pokémons"
+                Text="Load Pokémon Cards"
                 Clicked="OnLoadPokemonCardsClicked"
-                HorizontalOptions="Fill" />
+                FontAttributes="Bold"
+                HorizontalOptions="Fill"
+                />
 
         <ListView Grid.Row="4"
                   x:Name="PokemonCardsListView"
