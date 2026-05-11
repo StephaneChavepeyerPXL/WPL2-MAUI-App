@@ -1,8 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SteCvp.Domain.Entities;
 
@@ -11,32 +6,54 @@ namespace SteCvp.Presentation.Maui.Services
     public class RestService
     {
         private readonly HttpClient _httpClient;
-
-        private const string REST_URL = "https://lt0vjzzx-7082.euw.devtunnels.ms/api/PokemonCard";
+        private const string OverrideBaseUrl = ""; // Optioneel: devtunnel link hier
 
         public RestService()
         {
-            _httpClient = new HttpClient();
+            _httpClient = new HttpClient
+            {
+                Timeout = TimeSpan.FromSeconds(20)
+            };
         }
-
-        //public async Task<HttpResponseMessage> GetPokemonCardsAsync()
-        //{
-        //    var response = await _httpClient.GetAsync(REST_URL);
-
-        //    return response;
-        //}
 
         public async Task<IEnumerable<PokemonCard>> GetPokemonCardsAsync()
         {
-            var response = await _httpClient.GetAsync(REST_URL); // Verstuurd een GET-verzoek naar de REST API
+            var endpoint = BuildPokemonCardsEndpoint();
+            var response = await _httpClient.GetAsync(endpoint);
+            var content = await response.Content.ReadAsStringAsync();
 
-            var content = await response.Content.ReadAsStringAsync(); // Leest de inhoud van het antwoord als een string
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(
+                    $"REST call failed ({(int)response.StatusCode}) on {endpoint}. Response: {content}");
+            }
 
-            //await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("DEBUG", content, "OK");
+            return JsonConvert.DeserializeObject<IEnumerable<PokemonCard>>(content) ?? Enumerable.Empty<PokemonCard>();
+        }
 
-            var pokemonCards = JsonConvert.DeserializeObject<IEnumerable<PokemonCard>>(content);
+        public string GetCurrentEndpoint() => BuildPokemonCardsEndpoint();
 
-            return pokemonCards;
+        private static string BuildPokemonCardsEndpoint()
+        {
+            if (!string.IsNullOrWhiteSpace(OverrideBaseUrl))
+            {
+                return $"{OverrideBaseUrl.TrimEnd('/')}/api/PokemonCard";
+            }
+
+            var configuredBaseUrl = Environment.GetEnvironmentVariable("STE_CVP_API_BASE_URL");
+            var baseUrl = !string.IsNullOrWhiteSpace(configuredBaseUrl)
+                ? configuredBaseUrl.TrimEnd('/')
+                : GetDefaultBaseUrl();
+
+            return $"{baseUrl}/api/PokemonCard";
+        }
+
+        private static string GetDefaultBaseUrl()
+        {
+            if (DeviceInfo.Platform == DevicePlatform.Android)
+                return "http://10.0.2.2:5028";
+
+            return "http://localhost:5028";
         }
     }
 }

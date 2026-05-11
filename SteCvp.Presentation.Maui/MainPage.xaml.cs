@@ -25,11 +25,29 @@ namespace SteCvp.Presentation.Maui
                 return;
             }
 
-            var pokemonCards = await _restService.GetPokemonCardsAsync(); // Haalt de lijst van Pokemon-kaarten op van de REST API
+            LoadPokemonCardsButton.IsEnabled = false;
+            LoadPokemonCardsButton.Text = "Loading...";
 
-            PokemonCardsListView.ItemsSource = pokemonCards; // Stelt de ItemsSource van de ListView in op de opgehaalde lijst van Pokemon-kaarten
+            try
+            {
+                var pokemonCards = await _restService.GetPokemonCardsAsync(); // Haalt de lijst van Pokemon-kaarten op van de REST API
 
-            LoadPokemonCardsButton.Text = "Hide Pokémon Cards";
+                PokemonCardsListView.ItemsSource = pokemonCards; // Stelt de ItemsSource van de ListView in op de opgehaalde lijst van Pokemon-kaarten
+
+                LoadPokemonCardsButton.Text = "Hide Pokémon Cards";
+            }
+            catch (Exception ex)
+            {
+                LoadPokemonCardsButton.Text = "Load Pokémon Cards";
+                await DisplayAlert(
+                    "Connection error",
+                    $"Could not load cards from {_restService.GetCurrentEndpoint()}.{Environment.NewLine}{Environment.NewLine}{ex.Message}",
+                    "OK");
+            }
+            finally
+            {
+                LoadPokemonCardsButton.IsEnabled = true;
+            }
         }
 
         private async void OnPlaySoundClicked(object sender, EventArgs e)
@@ -39,9 +57,9 @@ namespace SteCvp.Presentation.Maui
                 return;
             }
 
-            string pokemonName = button.CommandParameter?.ToString();
+            string? pokemonName = button.CommandParameter?.ToString();
 
-            string fileName = pokemonName switch
+            string? fileName = pokemonName switch
             {
                 "Pikachu ex" => "pikachu.mp3",
                 "Charizard" => "charizard.mp3",
